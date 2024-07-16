@@ -39,14 +39,28 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     public void updateProductType(ProductType productType) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateProductType'");
+        String query = "UPDATE ProductType SET name = ? WHERE ProductTypeID = ?";
+
+        try (Connection con = dataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, productType.getName());
+            pstmt.setInt(2, productType.getProductTypeId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void deleteProductType(int productTypeId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteProductType'");
+        String query = "DELETE FROM ProductType WHERE ProductTypeID = ?";
+        try (Connection con = dataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setInt(1, productTypeId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
