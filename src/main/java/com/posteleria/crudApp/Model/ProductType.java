@@ -4,9 +4,13 @@ public class ProductType {
 
     int productTypeId;
     String name;
-
-    public int productTypeId() {
+    
+    public int getProductTypeId() {
         return productTypeId;
+    }
+
+    public void setProductTypeId(int productTypeId) {
+        this.productTypeId = productTypeId;
     }
 
     public String getName() {
