@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(Product product) {
-        String query = "INSERT INTO Product(name, ProductType, description, price, stock) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Product(name, productTypeId, description, price, stock) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection con = dataSource.getConnection();
                 PreparedStatement pstmt = con.prepareStatement(query)) {
@@ -42,8 +42,20 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void updateProduct(Product product) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateProduct'");
+        String query = "UPDATE Product SET name = ?, ProductTypeID = ?, description = ?, picture= ?, price = ?, stock = ? WHERE productID = ?";
+        try (Connection con = dataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, product.getName());
+            pstmt.setInt(2, product.getProductTypeId());
+            pstmt.setString(3, product.getDescription());
+            pstmt.setBytes(4, product.getPicture());
+            pstmt.setInt(5, product.getPrice());
+            pstmt.setInt(6, product.getStock());
+            pstmt.setInt(7, product.getProductId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -67,8 +79,9 @@ public class ProductServiceImpl implements ProductService {
 
             while (rs.next()) {
                 Product product = new Product();
+                product.setProductId(rs.getInt("productID"));
                 product.setName(rs.getString("name"));
-                product.setProductId(rs.getInt("ProductTypeID"));
+                product.setProductTypeId(rs.getInt("ProductTypeID"));
                 product.setPrice(rs.getInt("price"));
                 product.setStock(rs.getInt("stock"));
                 product.setDescription(rs.getString("description"));
