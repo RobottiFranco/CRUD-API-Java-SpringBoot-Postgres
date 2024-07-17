@@ -4,30 +4,18 @@ public class Product {
 
     int productId;
     String name;
-    String description;
-    String productType;
+    int productTypeId;
     int price;
     int stock;
-    byte image;
+    String description;
+    byte[] picture;
 
-    public int getproductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public String getProductType() {
-        return productType;
-    }
-
-    public void setProductType(String productType) {
-        this.productType = productType;
-    }
-
-    public byte getImage() {
-        return image;
-    }
-
-    public void setImage(byte image) {
-        this.image = image;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -38,12 +26,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public int getProductTypeId() {
+        return productTypeId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProductTypeId(int productTypeId) {
+        this.productTypeId = productTypeId;
     }
 
     public int getPrice() {
@@ -60,6 +48,22 @@ public class Product {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
 }
