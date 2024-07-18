@@ -11,7 +11,6 @@ create table Product(
 	price integer NOT NULL,
 	stock integer NOT NULL,
 	description varchar(70) NOT NULL,
-	picture bytea,
 	primary key(productID),
 	foreign key(ProductTypeID) references ProductType(ProductTypeID)
 );

@@ -1,84 +1,35 @@
 package com.posteleria.crudApp.Service.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.List;
-
-import javax.sql.DataSource;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
-import java.sql.Statement;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.posteleria.crudApp.Model.ProductType;
+import com.posteleria.crudApp.Repository.ProductTypeRepository;
 import com.posteleria.crudApp.Service.ProductTypeService;
 
 @Service
 public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Autowired
-    private DataSource dataSource;
+    private ProductTypeRepository productTypeRepository;
 
     @Override
     public void addProductType(ProductType productType) {
-        String query = "INSERT INTO ProductType(name) VALUES (?)";
-
-        try (Connection con = dataSource.getConnection();
-                PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1, productType.getName());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        productTypeRepository.addProductType(productType);
     }
 
     @Override
     public void updateProductType(ProductType productType) {
-        String query = "UPDATE ProductType SET name = ? WHERE ProductTypeID = ?";
-
-        try (Connection con = dataSource.getConnection();
-                PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1, productType.getName());
-            pstmt.setInt(2, productType.getProductTypeId());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        productTypeRepository.updateProductType(productType);
     }
 
     @Override
     public void deleteProductType(int productTypeId) {
-        String query = "DELETE FROM ProductType WHERE ProductTypeID = ?";
-        try (Connection con = dataSource.getConnection();
-                PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setInt(1, productTypeId);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        productTypeRepository.deleteProductType(productTypeId);
     }
 
     @Override
     public List<ProductType> getAllProductTypes() {
-        List<ProductType> result = new LinkedList<>();
-        try (Connection con = dataSource.getConnection()) {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ProductType");
-
-            while (rs.next()) {
-                ProductType productType = new ProductType();
-                productType.setProductTypeId(rs.getInt("ProductTypeID"));
-                productType.setName(rs.getString("name"));
-                result.add(productType);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
+        return productTypeRepository.getAllProductTypes();
     }
 }
