@@ -1,11 +1,11 @@
-package com.posteleria.crudApp.Service;
+package com.pasteleria.crudApp.Repository;
 
 import java.util.List;
 
-import com.posteleria.crudApp.Model.Product;
+import com.pasteleria.crudApp.Model.Product;
 
-public interface ProductService {
-    
+public interface ProductRepository {
+
     void addProduct(Product product);
 
     void updateProduct(Product product);
@@ -13,4 +13,5 @@ public interface ProductService {
     void deleteProduct(int productId);
 
     List<Product> getAllProducts();
+
 }

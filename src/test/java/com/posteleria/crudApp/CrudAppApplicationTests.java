@@ -1,4 +1,4 @@
-package com.posteleria.crudApp;
+package com.pasteleria.crudApp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

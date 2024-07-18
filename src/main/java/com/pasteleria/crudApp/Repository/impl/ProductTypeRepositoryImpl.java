@@ -1,8 +1,9 @@
-package com.posteleria.crudApp.Repository.impl;
+package com.pasteleria.crudApp.Repository.impl;
 
 import org.springframework.stereotype.Repository;
-import com.posteleria.crudApp.Model.ProductType;
-import com.posteleria.crudApp.Repository.ProductTypeRepository;
+
+import com.pasteleria.crudApp.Model.ProductType;
+import com.pasteleria.crudApp.Repository.ProductTypeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

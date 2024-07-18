@@ -1,4 +1,4 @@
-package com.posteleria.crudApp.Controller;
+package com.pasteleria.crudApp.Controller;
 
 import java.util.List;
 
@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.posteleria.crudApp.Model.ProductType;
-import com.posteleria.crudApp.Service.ProductTypeService;
+
+import com.pasteleria.crudApp.Model.ProductType;
+import com.pasteleria.crudApp.Service.ProductTypeService;
 
 @Controller
 @RequestMapping("/productType")

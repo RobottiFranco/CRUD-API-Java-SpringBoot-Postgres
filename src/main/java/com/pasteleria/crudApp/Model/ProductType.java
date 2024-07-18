@@ -1,4 +1,4 @@
-package com.posteleria.crudApp.Model;
+package com.pasteleria.crudApp.Model;
 
 public class ProductType {
 

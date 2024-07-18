@@ -1,10 +1,11 @@
-package com.posteleria.crudApp.Service;
+package com.pasteleria.crudApp.Repository;
+
 
 import java.util.List;
 
-import com.posteleria.crudApp.Model.ProductType;
+import com.pasteleria.crudApp.Model.ProductType;
 
-public interface ProductTypeService {
+public interface ProductTypeRepository {
 
     void addProductType(ProductType productType);
 

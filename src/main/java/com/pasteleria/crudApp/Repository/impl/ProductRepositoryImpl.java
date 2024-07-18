@@ -1,4 +1,4 @@
-package com.posteleria.crudApp.Repository.impl;
+package com.pasteleria.crudApp.Repository.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +12,9 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.posteleria.crudApp.Model.Product;
-import com.posteleria.crudApp.Repository.ProductRepository;
+
+import com.pasteleria.crudApp.Model.Product;
+import com.pasteleria.crudApp.Repository.ProductRepository;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {

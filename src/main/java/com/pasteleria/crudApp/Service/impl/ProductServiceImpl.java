@@ -1,11 +1,12 @@
-package com.posteleria.crudApp.Service.impl;
+package com.pasteleria.crudApp.Service.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.posteleria.crudApp.Model.Product;
-import com.posteleria.crudApp.Repository.ProductRepository;
-import com.posteleria.crudApp.Service.ProductService;
+
+import com.pasteleria.crudApp.Model.Product;
+import com.pasteleria.crudApp.Repository.ProductRepository;
+import com.pasteleria.crudApp.Service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
