@@ -14,4 +14,5 @@ public interface ProductTypeService {
 
     List<ProductType> getAllProductTypes();
 
+    ProductType getProductTypeById(int productTypeId);
 }

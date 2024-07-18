@@ -15,4 +15,6 @@ public interface ProductTypeRepository {
 
     List<ProductType> getAllProductTypes();
 
+    ProductType getProductTypeById(int productTypeId);
+
 }

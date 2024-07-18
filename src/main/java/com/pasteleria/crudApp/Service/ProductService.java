@@ -13,4 +13,7 @@ public interface ProductService {
     void deleteProduct(int productId);
 
     List<Product> getAllProducts();
+
+    Product getProductById(int productId);
+
 }

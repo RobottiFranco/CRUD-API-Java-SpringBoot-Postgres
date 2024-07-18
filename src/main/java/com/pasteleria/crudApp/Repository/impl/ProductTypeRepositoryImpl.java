@@ -2,6 +2,7 @@ package com.pasteleria.crudApp.Repository.impl;
 
 import org.springframework.stereotype.Repository;
 
+import com.pasteleria.crudApp.Exception.ProductServiceException;
 import com.pasteleria.crudApp.Model.ProductType;
 import com.pasteleria.crudApp.Repository.ProductTypeRepository;
 
@@ -75,4 +76,25 @@ public class ProductTypeRepositoryImpl implements ProductTypeRepository {
         }
         return result;
     }
+
+    @Override
+    public ProductType getProductTypeById(int productTypeId) {
+        ProductType productType = null;
+        String query = "SELECT * FROM ProductType WHERE ProductTypeID = ?";
+        try (Connection con = dataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setInt(1, productTypeId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    productType = new ProductType();
+                    productType.setProductTypeId(rs.getInt("ProductTypeID"));
+                    productType.setName(rs.getString("name"));
+                }
+            }
+        } catch (SQLException e) {
+            throw new ProductServiceException("Error retrieving product type by ID: " + e.getMessage());
+        }
+        return productType;
+    }
+
 }

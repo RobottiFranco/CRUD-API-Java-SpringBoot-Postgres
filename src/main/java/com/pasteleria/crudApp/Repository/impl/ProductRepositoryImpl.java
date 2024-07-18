@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.pasteleria.crudApp.Exception.ProductServiceException;
 import com.pasteleria.crudApp.Model.Product;
 import com.pasteleria.crudApp.Repository.ProductRepository;
 
@@ -89,6 +90,30 @@ public class ProductRepositoryImpl implements ProductRepository {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public Product getProductById(int productId) {
+        Product product = null;
+        String query = "SELECT * FROM Product WHERE productId = ?";
+        try (Connection con = dataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setInt(1, productId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    product = new Product();
+                    product.setProductId(rs.getInt("productID"));
+                    product.setName(rs.getString("name"));
+                    product.setProductTypeId(rs.getInt("ProductTypeID"));
+                    product.setPrice(rs.getInt("price"));
+                    product.setStock(rs.getInt("stock"));
+                    product.setDescription(rs.getString("description"));
+                }
+            }
+        } catch (SQLException e) {
+            throw new ProductServiceException("Error retrieving product by ID: " + e.getMessage());
+        }
+        return product;
     }
 
 }
