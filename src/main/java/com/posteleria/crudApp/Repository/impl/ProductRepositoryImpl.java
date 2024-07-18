@@ -11,12 +11,11 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import org.springframework.stereotype.Repository;
 import com.posteleria.crudApp.Model.Product;
 import com.posteleria.crudApp.Repository.ProductRepository;
 
-@Service
+@Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
     @Autowired
