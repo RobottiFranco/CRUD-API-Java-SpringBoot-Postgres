@@ -59,10 +59,11 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     public ProductType getProductTypeById(int productTypeId) {
-        try {
-            return productTypeRepository.getProductTypeById(productTypeId);
-        } catch (Exception e) {
-            throw new ProductTypeServiceException("Error retrieving product type: " + e.getMessage());
+        ProductType productType = productTypeRepository.getProductTypeById(productTypeId);
+        if (productType == null) {
+            throw new ProductTypeServiceException("Product type not found");
         }
+        return productType;
     }
+    
 }

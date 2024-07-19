@@ -94,6 +94,9 @@ public class ProductTypeRepositoryImpl implements ProductTypeRepository {
         } catch (SQLException e) {
             throw new ProductServiceException("Error retrieving product type by ID: " + e.getMessage());
         }
+        if (productType == null) {
+            throw new ProductServiceException("Product type not found");
+        }
         return productType;
     }
 
