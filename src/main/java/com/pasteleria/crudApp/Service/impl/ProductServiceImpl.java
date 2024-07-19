@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pasteleria.crudApp.Exception.ProductServiceException;
-import com.pasteleria.crudApp.Exception.ProductTypeServiceException;
 import com.pasteleria.crudApp.Model.Product;
-import com.pasteleria.crudApp.Model.ProductType;
 import com.pasteleria.crudApp.Repository.ProductRepository;
 import com.pasteleria.crudApp.Service.ProductService;
 
